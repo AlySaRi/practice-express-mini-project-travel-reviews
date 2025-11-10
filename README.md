@@ -163,6 +163,8 @@ Mostrar una lista de todos los destinos con sus reseñas.
 
 **Resultado esperado:** Ver una lista con todos los destinos almacenados en la base de datos.
 
+![Screenshot](https://devwomen2025.miguel.nz/images/practice/travel-reviews-home.webp)
+
 ---
 
 ## Iteración 3: Ver Detalle de un Destino (READ - Detail)
