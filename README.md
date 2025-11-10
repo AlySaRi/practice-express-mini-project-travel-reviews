@@ -163,7 +163,7 @@ Mostrar una lista de todos los destinos con sus reseñas.
 
 **Resultado esperado:** Ver una lista con todos los destinos almacenados en la base de datos.
 
-![Screenshot](https://devwomen2025.miguel.nz/images/practice/travel-reviews-home.webp)
+![Screenshot](travel-reviews-home.webp)
 
 ---
 
@@ -184,6 +184,8 @@ Mostrar toda la información de un destino específico.
      - "Eliminar" → Formulario POST a `/reviews/:id/delete`
 
 **Resultado esperado:** Ver toda su información detallada.
+
+![Screenshot](travel-reviews-read.webp)
 
 ---
 
@@ -207,6 +209,8 @@ Mostrar un formulario para crear una nueva reseña.
    - Botones: "Guardar" y "Cancelar" (enlace a `/reviews`)
 
 **Resultado esperado:** Ver un formulario para crear un nuevo destino.
+
+![Screenshot](travel-reviews-create.webp)
 
 ---
 
@@ -255,6 +259,8 @@ Mostrar un formulario pre-cargado con los datos del destino para editarlo.
    - Botones: "Actualizar" y "Cancelar"
 
 **Resultado esperado:** Ver el formulario con los datos del destino pre-cargados.
+
+![Screenshot](travel-reviews-edit.webp)
 
 ---
 
