@@ -1,16 +1,19 @@
-import 'dotenv/config';
-import express from 'express';
+import "dotenv/config";
+import express from "express";
+import { engine } from "express-handlebars";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// TODO: Configurar express-handlebars
-// TODO: Configurar archivos estáticos (public)
-// TODO: Configurar middleware para procesar formularios (express.urlencoded)
-// TODO: Configurar Cloudinary
-// TODO: Configurar multer para subida de archivos
-// TODO: Importar y usar rutas de reviews
+app.engine("handlebars", engine());
+app.set("view engine", "handlebars");
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+
+import reviewsRouter from "./routes/reviews.js";
+app.use("/reviews", reviewsRouter);
+
+app.get("/", (req, res) => res.redirect("/reviews"));
+
+app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));

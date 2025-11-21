@@ -1,0 +1,48 @@
+<div class="bg-white p-6 rounded shadow max-w-3xl mx-auto">
+
+  <!-- Imagen grande -->
+  <img src="{{review.imageUrl}}" class="rounded w-full mb-6 shadow">
+
+  <!-- DESTINO -->
+  <h2 class="text-2xl font-bold mb-1 text-gray-800">
+    {{review.destination}}
+  </h2>
+
+  <!-- Título -->
+  <p class="text-gray-600 text-lg mb-4">
+    {{review.title}}
+  </p>
+
+  <!-- RATING -->
+        <div class="flex items-center mb-3">
+          <span class="text-yellow-500 text-xl">★★★★★</span>
+          <span class="ml-2 text-gray-700 font-medium">
+            ({{this.rating}}/5)
+          </span>
+        </div>
+
+
+  <!-- Comentario completo -->
+  <p class="text-gray-700 leading-relaxed mb-6">
+    {{review.comment}}
+  </p>
+
+  <div class="flex gap-4">
+    <!-- Volver -->
+    <a href="/reviews" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">
+      ← Volver a la lista
+    </a>
+
+    <!-- Editar -->
+    <a href="/reviews/{{review.id}}/edit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+      Editar
+    </a>
+
+    <!-- Eliminar -->
+    <form action="/reviews/{{review.id}}/delete" method="POST">
+      <button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+        Eliminar
+      </button>
+    </form>
+  </div>
+</div>

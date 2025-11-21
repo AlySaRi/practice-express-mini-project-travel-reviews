@@ -1,0 +1,52 @@
+<div class="max-w-7xl mx-auto px-6 py-10">
+
+  <!-- TÍTULO -->
+  <h1 class="text-4xl font-bold mb-8">Travel Reviews</h1>
+
+  <!-- BOTÓN NUEVA RESEÑA (arriba a la derecha) -->
+  <div class="flex justify-end mb-6">
+    <a href="/reviews/new"
+      class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-md shadow">
+      Agregar Nueva Reseña
+    </a>
+  </div>
+
+  <!-- GRID DE TARJETAS -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    {{#each reviews}}
+    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+
+      <img src="{{this.imageUrl}}" alt="{{this.destination}}"
+        class="h-48 w-full object-cover">
+
+      <div class="p-5">
+        <h2 class="text-2xl font-semibold mb-1">{{this.destination}}</h2>
+        <p class="text-gray-600 mb-2">{{this.title}}</p>
+
+        <!-- RATING -->
+        <div class="flex items-center mb-3">
+          <span class="text-yellow-500 text-xl">★★★★★</span>
+          <span class="ml-2 text-gray-700 font-medium">
+            ({{this.rating}}/5)
+          </span>
+        </div>
+
+        <!-- COMENTARIO (preview) -->
+        <p class="text-gray-700 text-sm line-clamp-3">
+          {{this.comment}}
+        </p>
+
+        <!-- BOTÓN -->
+        <a href="/reviews/{{this.id}}"
+          class="inline-block mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md shadow-sm">
+          Ver Detalle
+        </a>
+      </div>
+
+    </div>
+    {{/each}}
+
+  </div>
+
+</div>

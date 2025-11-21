@@ -1,0 +1,50 @@
+<h1 class="text-3xl font-bold mb-6 text-center">Editar Reseña</h1>
+
+<div class="bg-white max-w-2xl mx-auto p-6 rounded shadow">
+
+  <form action="/reviews/{{review.id}}" method="POST" enctype="multipart/form-data" class="space-y-4">
+
+    <div>
+      <label class="block font-semibold mb-1">Destino *</label>
+      <input type="text" name="destination" value="{{review.destination}}" required class="w-full border p-2 rounded" />
+    </div>
+
+    <div>
+      <label class="block font-semibold mb-1">Título *</label>
+      <input type="text" name="title" value="{{review.title}}" required class="w-full border p-2 rounded" />
+    </div>
+
+    <div>
+      <label class="block font-semibold mb-1">Comentario *</label>
+      <textarea name="comment" rows="4" required class="w-full border p-2 rounded">{{review.comment}}</textarea>
+    </div>
+
+    <div>
+      <label class="block font-semibold mb-1">Valoración *</label>
+      <select name="rating" required class="w-full border p-2 rounded">
+        <option value="1" {{#if (eq review.rating "1")}}selected{{/if}}>1</option>
+        <option value="2" {{#if (eq review.rating "2")}}selected{{/if}}>2</option>
+        <option value="3" {{#if (eq review.rating "3")}}selected{{/if}}>3</option>
+        <option value="4" {{#if (eq review.rating "4")}}selected{{/if}}>4</option>
+        <option value="5" {{#if (eq review.rating "5")}}selected{{/if}}>5</option>
+      </select>
+    </div>
+
+    <div>
+      <p class="font-semibold mb-1">Imagen Actual:</p>
+      <img src="{{review.imageUrl}}" class="rounded mb-4 w-full shadow" />
+    </div>
+
+    <div>
+      <label class="block font-semibold mb-1">Cambiar imagen (opcional)</label>
+      <input type="file" name="image" accept="image/*" class="w-full border p-2 rounded bg-white" />
+    </div>
+
+    <div class="flex gap-4 pt-2">
+      <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Actualizar</button>
+      <a href="/reviews/{{review.id}}" class="px-4 py-2 bg-gray-600 text-white rounded">Cancelar</a>
+    </div>
+
+  </form>
+
+</div>
