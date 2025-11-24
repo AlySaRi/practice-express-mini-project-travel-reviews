@@ -82,7 +82,8 @@ router.get("/:id/edit", async (req, res) => {
   await db.read();
   const review = db.data.reviews.find(r => r.id === req.params.id);
   if (!review) return res.status(404).send("Review no encontrada");
-  res.render("reviews/edit", { review });
+  console.log (review)
+ res.render("reviews/edit", { review });
 });
 
 /* ACTUALIZAR */
