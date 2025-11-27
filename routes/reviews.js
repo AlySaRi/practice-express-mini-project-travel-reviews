@@ -17,7 +17,7 @@ cloudinary.config({
 /* MULTER CONFIG (MEMORY STORAGE) */
 const upload = multer({ storage: multer.memoryStorage() });
 
-/* subir imagen a Cloudinary desde Buffer */
+/* subir imagen a Cloudinary desde Buffer 
 async function uploadToCloudinary(fileBuffer) {
   return await new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
@@ -26,7 +26,7 @@ async function uploadToCloudinary(fileBuffer) {
     );
     stream.end(fileBuffer);
   });
-}
+}*/
 
 /* LISTA */
 router.get("/", async (req, res) => {
@@ -53,17 +53,26 @@ router.post("/new", upload.single("image"), async (req, res) => {
   try {
     await db.read();
 
-    let img = null;
-    if (req.file) img = await uploadToCloudinary(req.file.buffer);
+// Convertir el buffer a base64
+    const b64 = Buffer.from(req.file.buffer).toString('base64');
+    const dataURI = `data:${req.file.mimetype};base64,${b64}`;
 
+    // Subir a Cloudinary
+    const result = await cloudinary.uploader.upload(dataURI, {
+      folder: 'places',
+      resource_type: 'auto'
+    });
+
+    // Crear objeto del lugar
     const newReview = {
       id: crypto.randomUUID(),
       destination: req.body.destination,
       title: req.body.title,
       comment: req.body.comment,
       rating: req.body.rating,
-      imageUrl: resultado_de_cloudinary.secure_url,
-      imagePublicId: resultado_de_cloudinary.public_id
+      imageUrl: result.secure_url,
+      imagePublicId:  result.public_id,
+      createdAt: new Date().toISOString()
     };
 
     db.data.reviews.push(newReview);
@@ -82,7 +91,6 @@ router.get("/:id/edit", async (req, res) => {
   await db.read();
   const review = db.data.reviews.find(r => r.id === req.params.id);
   if (!review) return res.status(404).send("Review no encontrada");
-  console.log (review)
  res.render("reviews/edit", { review });
 });
 
@@ -112,7 +120,8 @@ router.post("/:id", upload.single("image"), async (req, res) => {
       comment: req.body.comment,
       rating: req.body.rating,
       imageUrl,
-      imagePublicId
+      imagePublicId,
+      updatedAt: new Date().toISOString()
     };
 
     await db.write();

@@ -5,8 +5,9 @@
       "destination": "Barcelona, España",
       "title": "Ciudad increíble con mucha historia",
       "comment": "Barcelona es una ciudad vibrante llena de arquitectura modernista de Gaudí. La Sagrada Familia es impresionante y las Ramblas están llenas de vida. La comida es deliciosa y la gente muy acogedora.",
-      "rating": "5",
-      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800"
+      "rating": "4",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800",
+      "updatedAt": "2025-11-24T20:40:59.502Z"
     },
     {
       "id": "2",

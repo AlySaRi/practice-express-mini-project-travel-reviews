@@ -1,6 +1,5 @@
- <h1> Patata </h1>
- 
- <!-- <h1 class="text-3xl font-bold mb-6 text-center">Editar Reseña</h1>
+
+ <h1 class="text-3xl font-bold mb-6 text-center">Editar Reseña</h1>
 
 <div class="bg-white max-w-2xl mx-auto p-6 rounded shadow">
 
@@ -24,11 +23,12 @@
     <div>
       <label class="block font-semibold mb-1">Valoración *</label>
      <select name="rating" required class="w-full border p-2 rounded">
-        <option value="1" {{#if (review.rating "1")}}selected{{/if}}>1</option>
-        <option value="2" {{#if (review.rating "2")}}selected{{/if}}>2</option>
-        <option value="3" {{#if (review.rating "3")}}selected{{/if}}>3</option>
-        <option value="4" {{#if (review.rating "4")}}selected{{/if}}>4</option>
-        <option value="5" {{#if (review.rating "5")}}selected{{/if}}>5</option>
+        <option value="">Selecciona</option>
+        <option value="1">1 - ★☆☆☆☆</option>
+        <option value="2">2 - ★★☆☆☆</option>
+        <option value="3">3 - ★★★☆☆</option>
+        <option value="4">4 - ★★★★☆</option>
+        <option value="5">5 - ★★★★★</option>
       </select>
     </div>
 
@@ -48,6 +48,13 @@
     </div>
 
   </form>
+  
+  <script>
+
+  const ratingReview = '{{review.rating}}';
+
+  document.querySelector('select[name="rating"]').value = ratingReview;
+
+</script>
 
 </div>
--->
